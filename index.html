@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="css/all.min.css" />
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="css/bootstrap.min.css" />
+    <!-- Main CSS File  -->
+    <link rel="stylesheet" href="css/main.css" />
+    <title>Document</title>
+  </head>
+
+  <body>
+    <div class="container">
+      <h1 class="text-muted h1">Book Marker</h1>
+      <hr />
+      <div class="div my-5 p-5 text-bg-light text-center">
+        <h2 class="h2">Book Mark Your Favorite Site</h2>
+        <form>
+          <label class="d-block my-3 h5" for="NameInput">Site Name</label>
+          <input
+            class="form-control"
+            type="text"
+            placeholder="Book Mark Name"
+            id="NameInput"
+          />
+          <label class="d-block my-3 h5" for="UrlInput">Site Url</label>
+          <input
+            class="form-control"
+            type="text"
+            placeholder="Book Mark Url"
+            id="UrlInput"
+          />
+          <button id="CreateBtn" type="button" onclick="Create();" class="btn btn-dark mt-4">Submit</button>
+          <button id="UpdateBtn" type="button" onclick="Update();" class="d-none btn btn-dark mt-4">Update</button>
+      </div>
+          <input
+            class="form-control mb-5"
+            type="text"
+            placeholder="Search BY Book Mark Name"
+            id="SearchInput"
+            oninput="Search();"
+          />
+      </form>
+      <div class="ReadData bg-light p-5 ">
+        <table class="table">
+          <tbody id="Read">
+            
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- Link The JavaScript File For Bootstrap -->
+    <script src="js/bootstrap.bundle.min.js"></script>
+    <!-- Link The Main JavaScript File -->
+    <script src="js/main.js"></script>
+  </body>
+</html>
