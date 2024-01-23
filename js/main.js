@@ -9,14 +9,18 @@ if (localStorage.getItem("BookMarks", BookMarks) != null) {
 DisplayData();
 
 function Create() {
-  var BookMark = {
-    Name: NameInput.value,
-    Url: UrlInput.value,
-  };
-  BookMarks.push(BookMark);
-  DisplayData();
-  localStorage.setItem("BookMarks", JSON.stringify(BookMarks));
-  ClearForm();
+  if (NameInput.value == "" || UrlInput.value == "") {
+    alert("Please enter data");
+  } else {
+    var BookMark = {
+      Name: NameInput.value,
+      Url: UrlInput.value,
+    };
+    BookMarks.push(BookMark);
+    DisplayData();
+    localStorage.setItem("BookMarks", JSON.stringify(BookMarks));
+    ClearForm();
+  }
 }
 
 function ClearForm() {
@@ -27,16 +31,16 @@ function ClearForm() {
 function DisplayData() {
   var Data = "";
   for (var i = 0; i < BookMarks.length; i++) {
-    Data += `<div class="Row my-3">
-          <tr>
-    <td>${BookMarks[i].Name}</td>
-            <td><button class="btn btn-outline-info"><a target="_blank" href="${BookMarks[i].Url}">Visit</a></button></td>
-            <td><button class="btn btn-outline-warning" onclick="ShowData(${i});">Update</button></td>
-            <td><button class="btn btn-outline-danger" onclick="Delete(${i});">Delete</button></td>
-          </tr>
-            </div>`;
+    Data += `<div class="row gy-2 bg-light p-2 my-2 rounded">
+        <div class="col-lg-9">${BookMarks[i].Name}</div>
+        <div class="col-lg-3 row">
+          <div class="col-lg-4"><button class="btn btn-outline-info"><a target="_blank" href="${BookMarks[i].Url}">Visit</a></button></div>
+          <div class="col-lg-4"><button class="btn btn-outline-danger" onclick="Delete(${i});">Delete</button></div>
+          <div class="col-lg-4"><button class="btn btn-outline-warning" onclick="ShowData(${i});">Update</button></div>
+        </div>
+      </div>`;
   }
-  document.getElementById("Read").innerHTML = Data;
+  document.getElementById("read").innerHTML = Data;
 }
 
 function Delete(i) {
@@ -59,22 +63,26 @@ function Update() {
   DisplayData();
   localStorage.setItem("BookMarks", JSON.stringify(BookMarks));
   ClearForm();
+  document.getElementById("CreateBtn").classList.remove("d-none");
+  document.getElementById("UpdateBtn").classList.add("d-none");
 }
 
 function Search() {
   var Data = "";
-  ""
+  ("");
   for (var i = 0; i < BookMarks.length; i++) {
-    if (BookMarks[i].Name.toLowerCase().includes(SearchInput.value.toLowerCase())) {
-      Data += `<div class="Row my-3">
-          <tr>
-    <td>${BookMarks[i].Name}</td>
-            <td><button class="btn btn-outline-info"><a target="_blank" href="${BookMarks[i].Url}">Visit</a></button></td>
-            <td><button class="btn btn-outline-warning" onclick="ShowData(${i});">Update</button></td>
-            <td><button class="btn btn-outline-danger" onclick="Delete(${i});">Delete</button></td>
-          </tr>
-            </div>`;
+    if (
+      BookMarks[i].Name.toLowerCase().includes(SearchInput.value.toLowerCase())
+    ) {
+      Data += `<div class="row gy-2 bg-light p-2 my-2 rounded">
+        <div class="col-lg-9">${BookMarks[i].Name}</div>
+        <div class="col-lg-3 row">
+          <div class="col-lg-4"><button class="btn btn-outline-info"><a target="_blank" href="${BookMarks[i].Url}">Visit</a></button></div>
+          <div class="col-lg-4"><button class="btn btn-outline-danger" onclick="Delete(${i});">Delete</button></div>
+          <div class="col-lg-4"><button class="btn btn-outline-warning" onclick="ShowData(${i});">Update</button></div>
+        </div>
+      </div>`;
     }
   }
-  document.getElementById("Read").innerHTML = Data;
+  document.getElementById("read").innerHTML = Data;
 }

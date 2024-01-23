@@ -9,28 +9,28 @@
     <link rel="stylesheet" href="css/bootstrap.min.css" />
     <!-- Main CSS File  -->
     <link rel="stylesheet" href="css/main.css" />
-    <title>Document</title>
+    <title>Bookmarker</title>
   </head>
 
   <body>
     <div class="container">
       <h1 class="text-muted h1">Book Marker</h1>
       <hr />
-      <div class="div my-5 p-5 text-bg-light text-center">
-        <h2 class="h2">Book Mark Your Favorite Site</h2>
+      <div class="div my-5 p-5 text-bg-light text-center rounded">
+        <h2 class="h2">Bookmarker your favorite site</h2>
         <form>
-          <label class="d-block my-3 h5" for="NameInput">Site Name</label>
+          <label class="d-block my-3 h5" for="NameInput">site name</label>
           <input
             class="form-control"
             type="text"
-            placeholder="Book Mark Name"
+            placeholder="Bookmark name"
             id="NameInput"
           />
-          <label class="d-block my-3 h5" for="UrlInput">Site Url</label>
+          <label class="d-block my-3 h5" for="UrlInput">site url</label>
           <input
             class="form-control"
             type="text"
-            placeholder="Book Mark Url"
+            placeholder="Bookmark url"
             id="UrlInput"
           />
           <button id="CreateBtn" type="button" onclick="Create();" class="btn btn-dark mt-4">Submit</button>
@@ -39,17 +39,13 @@
           <input
             class="form-control mb-5"
             type="text"
-            placeholder="Search BY Book Mark Name"
+            placeholder="Real time search"
             id="SearchInput"
             oninput="Search();"
           />
       </form>
-      <div class="ReadData bg-light p-5 ">
-        <table class="table">
-          <tbody id="Read">
-            
-          </tbody>
-        </table>
+      <div id="read" class="read">
+
       </div>
     </div>
 
@@ -59,3 +55,6 @@
     <script src="js/main.js"></script>
   </body>
 </html>
+
+
+
