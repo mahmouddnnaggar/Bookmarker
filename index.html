@@ -32,10 +32,13 @@
             type="text"
             placeholder="Bookmark url"
             id="UrlInput"
+            oninput="Validation()"
           />
           <button id="CreateBtn" type="button" onclick="Create();" class="btn btn-dark mt-4">Submit</button>
           <button id="UpdateBtn" type="button" onclick="Update();" class="d-none btn btn-dark mt-4">Update</button>
-      </div>
+          <p id="alert-invalid" class="alert-danger alert text-center my-3 d-none">Your data is invalid</p>
+
+        </div>
           <input
             class="form-control mb-5"
             type="text"

@@ -3,6 +3,8 @@ var UrlInput = document.getElementById("UrlInput");
 var SearchInput = document.getElementById("SearchInput");
 var BookMarks = [];
 var IndexUpdate = 0;
+var text = UrlInput.value;
+var regexName = /^[A-z]{5,20}\.com$/;
 if (localStorage.getItem("BookMarks", BookMarks) != null) {
   BookMarks = JSON.parse(localStorage.getItem("BookMarks"));
 }
@@ -10,7 +12,9 @@ DisplayData();
 
 function Create() {
   if (NameInput.value == "" || UrlInput.value == "") {
-    alert("Please enter data");
+    document.getElementById("alert-invalid").classList.remove("d-none");
+  } else if (regexName.test(text) == false) {
+    document.getElementById("alert-invalid").classList.remove("d-none");
   } else {
     var BookMark = {
       Name: NameInput.value,
@@ -19,6 +23,8 @@ function Create() {
     BookMarks.push(BookMark);
     DisplayData();
     localStorage.setItem("BookMarks", JSON.stringify(BookMarks));
+    UrlInput.classList.remove("is-valid");
+    document.getElementById("alert-invalid").classList.add("d-none");
     ClearForm();
   }
 }
@@ -58,13 +64,21 @@ function ShowData(i) {
 }
 
 function Update() {
-  BookMarks[IndexUpdate].Name = NameInput.value;
-  BookMarks[IndexUpdate].Url = UrlInput.value;
-  DisplayData();
-  localStorage.setItem("BookMarks", JSON.stringify(BookMarks));
-  ClearForm();
-  document.getElementById("CreateBtn").classList.remove("d-none");
-  document.getElementById("UpdateBtn").classList.add("d-none");
+  if (NameInput.value == "" || UrlInput.value == "") {
+    document.getElementById("alert-invalid").classList.remove("d-none");
+  } else if (regexName.test(text) == false) {
+    document.getElementById("alert-invalid").classList.remove("d-none");
+  } else {
+    BookMarks[IndexUpdate].Name = NameInput.value;
+    BookMarks[IndexUpdate].Url = UrlInput.value;
+    DisplayData();
+    localStorage.setItem("BookMarks", JSON.stringify(BookMarks));
+    ClearForm();
+    document.getElementById("CreateBtn").classList.remove("d-none");
+    document.getElementById("UpdateBtn").classList.add("d-none");
+    UrlInput.classList.remove("is-valid");
+    document.getElementById("alert-invalid").classList.add("d-none");
+  }
 }
 
 function Search() {
@@ -85,4 +99,17 @@ function Search() {
     }
   }
   document.getElementById("read").innerHTML = Data;
+}
+
+function Validation() {
+  text = UrlInput.value;
+  regexName = /^[A-z]{5,20}\.com$/;
+
+  if (regexName.test(text) == true) {
+    UrlInput.classList.add("is-valid");
+    UrlInput.classList.remove("is-invalid");
+  } else {
+    UrlInput.classList.remove("is-valid");
+    UrlInput.classList.add("is-invalid");
+  }
 }
