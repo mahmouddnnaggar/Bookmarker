@@ -72,8 +72,8 @@ function Update() {
     BookMarks[IndexUpdate].Name = NameInput.value;
     BookMarks[IndexUpdate].Url = UrlInput.value;
     DisplayData();
-    localStorage.setItem("BookMarks", JSON.stringify(BookMarks));
     ClearForm();
+    localStorage.setItem("BookMarks", JSON.stringify(BookMarks));
     document.getElementById("CreateBtn").classList.remove("d-none");
     document.getElementById("UpdateBtn").classList.add("d-none");
     UrlInput.classList.remove("is-valid");
